@@ -1,2 +1,3 @@
 app.ts
 .vscodeignore
+*.vsix
