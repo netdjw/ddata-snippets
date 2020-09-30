@@ -22,6 +22,9 @@
   "author": "Balázs Winkler",
   "publisher": "netdjw",
   "license": "MIT",
+  "categories": [
+    "Snippets"
+  ],
   "contributes": {
     "languages": [
       {
@@ -38,7 +41,7 @@
     "snippets": [
       {
         "language": "typescript",
-        "path": "./.vscode/ddata-snippets.code-snippets"
+        "path": "./.vscode/ddata-snippets.json"
       }
     ]
   }
