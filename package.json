@@ -1,8 +1,12 @@
 {
   "name": "ddata-snippets",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Code snippets for ddata-* packages",
   "main": "index.js",
+  "homepage": "https://github.com/netdjw/ddata-snippets",
+  "repository": {
+    "url": "https://github.com/netdjw/ddata-snippets"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +16,30 @@
     "code-snippets",
     "vscode"
   ],
+  "engines": {
+    "vscode": "^1.22.0"
+  },
   "author": "Balázs Winkler",
-  "publisher": "Balázs Winkler",
-  "license": "MIT"
+  "publisher": "netdjw",
+  "license": "MIT",
+  "contributes": {
+    "languages": [
+      {
+        "id": "typescript",
+        "aliases": [
+          "typescript",
+          "ts"
+        ],
+        "extensions":[
+          ".ts"
+        ]
+      }
+    ],
+    "snippets":[
+      {
+        "language": "typescript",
+        "path": "./.vscode/ddata-snippets.code-snippets"
+      }
+    ]
+  }
 }
