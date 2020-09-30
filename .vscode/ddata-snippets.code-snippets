@@ -1,0 +1,66 @@
+{
+  "Add subscription": {
+    "scope": "typescript",
+    "prefix": "!subscription",
+    "body": "subscription: Subscription$0;",
+    "description": "Add subscription property"
+  },
+
+  "Add loader property as new DataFactory()": {
+    "scope": "typescript",
+    "prefix": "!loader:",
+    "body": "loader: DataFactory = new DataFactory$0();"
+  },
+
+  "Ddata loader code snippet": {
+    "scope": "typescript",
+    "prefix": "!loader.load",
+    "body": [
+      "this.subscription = this.loader.load(",
+      "\t[",
+      "\t\t'$1',",
+      "\t],",
+      "\tthis,",
+      "\t[this.helperService.getOne(this.model, this.isModal)]",
+      ").subscribe();"
+    ],
+    "description": "Ddata loader code snippet"
+  },
+
+  "Ddata class property init code snippet": {
+    "scope": "typescript",
+    "prefix": "!init.field",
+    "body": ["this.$field = !!data.$field ? data.$field : '$0';"]
+  },
+
+  "Ddata class property prepareToSave code snippet": {
+    "scope": "typescript",
+    "prefix": "!prepareToSave.field",
+    "body": ["$field = !!this.$field ? this.$field : '$0',"]
+  },
+
+  "Ddata init array code snippet": {
+    "scope": "typescript",
+    "prefix": "!init.array",
+    "body": [
+      "// $field",
+      "if (!!data.$field && data.$field instanceof Array) {",
+      "\tdata.$field.forEach((element: any) => {",
+      "\t\tthis.$field.push( new $class().init(element) );",
+      "\t});",
+      "}"
+    ]
+  },
+
+  "Ddata prepareToSave array preparation code snippet": {
+    "scope": "typescript",
+    "prefix": "!prepareToSave.array",
+    "body": [
+      "// $field",
+      "const $field: any[] = [];",
+      "this.$field.forEach((element: ${ClassName}Interface) => {",
+      "\t$field.push(element.prepareToSave());",
+      "});"
+    ]
+  }
+}
