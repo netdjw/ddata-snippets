@@ -33,6 +33,12 @@
     "body": ["this.$field = !!data.$field ? data.$field : '$0';"]
   },
 
+  "Ddata class data parameter init code snippet": {
+    "scope": "typescript",
+    "prefix": "!init.data",
+    "body": ["data = !!data ? data : {};"]
+  },
+
   "Ddata class property prepareToSave code snippet": {
     "scope": "typescript",
     "prefix": "!prepareToSave.field",
@@ -61,6 +67,60 @@
       "this.$field.forEach((element: ${ClassName}Interface) => {",
       "\t$field.push(element.prepareToSave());",
       "});"
+    ]
+  },
+
+  "Ddata class code snippet": {
+    "scope": "typescript",
+    "prefix": "!class",
+    "body": [
+      "import { BaseModel, FieldContainerInterface, ID, ValidationRuleInterface } from 'ddata-core';",
+      "import { ${ClassName}Interface, ${ClassName}UIFieldsInterface } from './${FileName}.interface';",
+      "",
+      "export class ${ClassName} extends BaseModel implements ${ClassName}Interface {",
+      "\treadonly api_endpoint = '/${FileName}';",
+      "\treadonly model_name = '${ClassName}';",
+      "\tid: ID;",
+      "",
+      "\tvalidationRules: ValidationRuleInterface = {",
+      "\t};",
+      "",
+      "\tfields: FieldContainerInterface<{ClassName}UIFieldsInterface>;",
+      "",
+      "\tinit(data?: any): ${ClassName}Interface {",
+      "\t\tdata = !!data ? data : {};",
+      "",
+      "\t\tthis.id = !!data.id ? data.id : 0;",
+      "",
+      "\t\treturn this;",
+      "\t}",
+      "",
+      "\tprepareToSave(): any {",
+      "\t\treturn {",
+      "\t\t\tid: !!this.id ? this.id : 0,",
+      "\t\t};",
+      "\t}",
+      "}"
+    ]
+  },
+
+  "Ddata interface code snippet": {
+    "scope": "typescript",
+    "prefix": "!interface",
+    "body": [
+      "import { BaseModelWithoutTypeDefinitionInterface, FieldsInterface, ID } from 'ddata-core';",
+      "",
+      "export interface ${InterfaceName}UIFieldsInterface {",
+      "\tname: string;",
+      "}",
+      "",
+      "export interface ${InterfaceName}Interface extends",
+      "\t${InterfaceName}UIFieldsInterface,",
+      "\tFieldsInterface<${InterfaceName}UIFieldsInterface>,",
+      "\tBaseModelWithoutTypeDefinitionInterface {",
+      "",
+      "\tid: ID;",
+      "}"
     ]
   }
 }

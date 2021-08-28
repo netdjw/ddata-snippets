@@ -36,6 +36,14 @@ this.subscription = this.loader.load(
 ).subscribe();
 ```
 
+### `!init.data`
+
+The result:
+
+```typescript
+data = !!data ? data : {};
+```
+
 ### `!init.field`
 
 The result:
@@ -75,4 +83,58 @@ const field: any[] = [];
 this.field.forEach((element: ClassNameInterface) => {
   field.push(element.prepareToSave());
 });
+```
+
+### `!class`
+
+The result:
+
+```typescript
+import { BaseModel, FieldContainerInterface, ID, ValidationRuleInterface } from 'ddata-core';
+import { ClassNameInterface, ClassNameUIFieldsInterface } from './FileName.interface';
+
+export class ClassName extends BaseModel implements ClassNameInterface {
+  readonly api_endpoint = '/FileName';
+  readonly model_name = 'ClassName';
+  id: ID;
+
+  validationRules: ValidationRuleInterface = {
+  };
+
+  fields: FieldContainerInterface<{ClassName}UIFieldsInterface>;
+
+  init(data?: any): ClassNameInterface {
+    data = !!data ? data : {};
+
+    this.id = !!data.id ? data.id : 0;
+
+    return this;
+  }
+
+  prepareToSave(): any {
+    return {
+      id: !!this.id ? this.id : 0,
+    };
+  }
+}
+```
+
+### `!interface`
+
+The result:
+
+```typescript
+import { BaseModelWithoutTypeDefinitionInterface, FieldsInterface, ID } from 'ddata-core';
+
+export interface InterfaceNameUIFieldsInterface {
+  name: string;
+}
+
+export interface InterfaceNameInterface extends
+  InterfaceNameUIFieldsInterface,
+  FieldsInterface<InterfaceNameUIFieldsInterface>,
+  BaseModelWithoutTypeDefinitionInterface {
+
+  id: ID;
+}
 ```
