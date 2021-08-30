@@ -1,6 +1,6 @@
 {
   "name": "ddata-snippets",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "description": "Code snippets for ddata-* packages",
   "main": "index.js",
   "homepage": "https://github.com/netdjw/ddata-snippets",
@@ -44,5 +44,8 @@
         "path": "./.vscode/ddata-snippets.json"
       }
     ]
-  }
+  },
+  "activationEvents": [
+    "onLanguage:typescript"
+  ]
 }
