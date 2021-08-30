@@ -33,6 +33,12 @@
     "body": ["this.$field = !!data.$field ? data.$field : '$0';"]
   },
 
+  "Ddata class property init with class code snippet": {
+    "scope": "typescript",
+    "prefix": "!init.field.class",
+    "body": ["this.$field = !!data.$field ? new ${ClassName}().init(data.$field) : new ${ClassName}().init();"]
+  },
+
   "Ddata class data parameter init code snippet": {
     "scope": "typescript",
     "prefix": "!init.data",
@@ -85,7 +91,7 @@
       "\tvalidationRules: ValidationRuleInterface = {",
       "\t};",
       "",
-      "\tfields: FieldContainerInterface<{ClassName}UIFieldsInterface>;",
+      "\tfields: FieldContainerInterface<${ClassName}UIFieldsInterface>;",
       "",
       "\tinit(data?: any): ${ClassName}Interface {",
       "\t\tdata = !!data ? data : {};",
@@ -121,6 +127,22 @@
       "",
       "\tid: ID;",
       "}"
+    ]
+  },
+
+  "Ddata required string validation rule code snippet": {
+    "scope": "typescript",
+    "prefix": "!valid.required.string",
+    "body": [
+      "${field}: ['required', 'string'],"
+    ]
+  },
+
+  "Ddata required integer validation rule code snippet": {
+    "scope": "typescript",
+    "prefix": "!valid.required.integer",
+    "body": [
+      "${field}: ['required', 'integer'],"
     ]
   }
 }
